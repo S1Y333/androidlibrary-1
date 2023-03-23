@@ -8,16 +8,14 @@ jobs:
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
       - image: cimg/android:2023.02
-      - image: cimg/openjdk:19.0.2
+
 
     steps:
       - checkout
 
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "./build.gradle" }}
-      - run:
-          name: chmod permissions
-          command: chmod +x ./gradlew
+          key: jars-{{ checksum "./build.gradle" }}
+
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
@@ -26,7 +24,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "./build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}
 
       # Build
       - run:
