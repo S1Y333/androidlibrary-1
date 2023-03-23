@@ -3,7 +3,7 @@
 version: 2.1
 
 jobs:
-  android-library:
+  build:
 
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
