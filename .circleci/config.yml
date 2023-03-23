@@ -41,7 +41,7 @@ jobs:
             #- run:
             #  name: Authenticate with GitHub Packages
             # command: |
-            #  echo $GITHUB_TOKEN
+          #  echo $GITHUB_TOKEN
           # echo $GITHUB_USERNAME
 
           #run mvn
@@ -52,7 +52,7 @@ jobs:
 
       # Invoke jobs via workflows
       # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-      workflows:
-       android-library-workflow:
-       jobs:
-       - android-library
+    workflows:
+      android-library-workflow:
+      jobs:
+        - android-library
