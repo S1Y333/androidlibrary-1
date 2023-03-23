@@ -8,6 +8,7 @@ jobs:
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
       - image: cimg/android:2023.02
+      - image: cimg/openjdk:19.0.2
 
     steps:
       - checkout
