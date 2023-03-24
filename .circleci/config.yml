@@ -3,7 +3,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build-androidlibrary:
 
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
@@ -14,7 +14,10 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: jars-{{ checksum "./build.gradle" }}
+          key:
+           - v1-dependencies-{{ checksum "build.gradle" }}
+                  # fallback to using the latest cache if no exact match is found
+           - v1-dependencies-
 
       - run:
           name: Download Dependencies
@@ -24,7 +27,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}
+          key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # Build
       - run:
@@ -51,3 +54,7 @@ jobs:
 
       # Invoke jobs via workflows
       # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+      workflows:
+        build-androidibrary-workflow:
+          jobs:
+            - build-androidlibrary
