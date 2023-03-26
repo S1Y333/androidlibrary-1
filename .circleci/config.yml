@@ -3,8 +3,7 @@
 version: 2.1
 
 jobs:
-  build:
-
+  build-andriodlibrary:
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
       - image: cimg/android:2023.02
@@ -16,7 +15,6 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
@@ -34,11 +32,10 @@ jobs:
           name: build
           command: ./gradlew clean assemble
 
-
       # run tests
       - run:
           name: run tests
-          command: ./gradlew test
+          command: ./gradlew lint test
 
             #- run:
             #  name: Authenticate with GitHub Packages
