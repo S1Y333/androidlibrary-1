@@ -12,20 +12,12 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            - v1-dependencies-
+
 
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
 
-
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # Build
       - run:
