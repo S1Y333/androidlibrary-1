@@ -2,8 +2,12 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  android: circleci/android@2.0.3
+
 jobs:
   build:
+    executor: android/android-machine
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
       - image: cimg/android:2023.02
