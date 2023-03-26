@@ -35,7 +35,7 @@ jobs:
       # run tests
       - run:
           name: run tests
-          command: ./gradlew andriodTest
+          command: ./gradlew androidTest
 
       - store_test_results:
           path: app/build/test-results
