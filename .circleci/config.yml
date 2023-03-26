@@ -4,11 +4,9 @@ version: 2.1
 
 jobs:
   build:
-    machine:
-      image: android:2023.02.1
     docker:
       # choose the right version, which include the maven, otherwise the mvn deploy will fail
-      - image: cimg/android:2023.02
+      - image: cimg/android:2023.03
 
 
     steps:
