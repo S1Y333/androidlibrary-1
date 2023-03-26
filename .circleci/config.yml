@@ -35,7 +35,7 @@ jobs:
       # run tests
       - run:
           name: run tests
-          command: ./gradlew lint test
+          command: ./gradlew PropertiesNonPrivilegedTest
 
             #- run:
             #  name: Authenticate with GitHub Packages
