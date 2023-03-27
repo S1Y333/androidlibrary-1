@@ -22,7 +22,6 @@ jobs:
       - android/save-gradle-cache:
           cache-prefix: v1a
 workflows:
-  test:
     jobs:
       - test
 
