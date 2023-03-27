@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - android/create-avd
-          install: true
-          system-image: system-images;android-29;default;x86
+        install:true
+        system-image:system-images;android-29;default;x86
       - android/start-emulator:
           avd-name: myavd
           no-window: true
